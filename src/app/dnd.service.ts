@@ -5,12 +5,12 @@ import { IRace } from './character/race';
 import { Observable } from 'rxjs';
 //import { IClasses } from './character/classes';
 
-const httpOptions = {
+/*const httpOptions = {
   headers: new HttpHeaders({
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET'
   })
-}
+}*/
 interface IClasses {
   count: number,
   results: Array<DnDClass>

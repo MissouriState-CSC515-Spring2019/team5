@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DndService } from '../dnd.service';
 import { FormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Character } from './character';
 
 interface IClasses {
   count: number,
@@ -20,6 +21,7 @@ interface DnDClass {
 export class CharacterComponent implements OnInit {
 
   public characterForm: FormGroup;
+  public characterModel = new Character("","");
   public classes: IClasses;
   public races: IClasses;
   public classNames = [];
@@ -55,9 +57,9 @@ export class CharacterComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.characterForm.valid) {
-      console.log("Fight clicked");
-    }
+    //if (this.characterForm.valid) {
+      console.log(this.characterModel);
+    //}
   }
 
 }
