@@ -58,8 +58,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "dandd-app:build",
-            "proxyConfig": "proxy.conf.json"
+            "browserTarget": "dandd-app:build"
           },
           "configurations": {
             "production": {

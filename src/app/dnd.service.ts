@@ -11,7 +11,6 @@ const httpOptions = {
     'Access-Control-Allow-Methods': 'GET'
   })
 }
-console.log(httpOptions);
 interface IClasses {
   count: number,
   results: Array<DnDClass>
@@ -27,27 +26,25 @@ interface DnDClass {
 })
 export class DndService {
 
-  private baseUrl: string = "http://dnd5eapi.co/api/";
+  private baseUrl: string = "https://cors-anywhere.herokuapp.com/http://dnd5eapi.co/api/";
 
   private classes = Array<DClass>();
 
   constructor(private http: HttpClient) { }
 
   getClasses(): Observable<IClasses> {
-    let classNames = this.http.get<IClasses>(this.baseUrl+"classes", httpOptions);
-    return classNames;
+    return this.http.get<IClasses>(this.baseUrl+"classes");
   }
 
-  getClassesFetch() {
-    fetch(this.baseUrl+"classes", {method: "GET", headers: {"content-type": "application/json"}})
-    .then(function(response) {
-      console.log(response)
-    });
-    return [];
+  getClass(i): Observable<DnDClass> {
+    return this.http.get<DnDClass>(this.baseUrl+"classes/"+i);
   }
 
-  getRaces(): Observable<IRace[]> {
-    let races = this.http.get<IRace[]>(this.baseUrl+"races", httpOptions);
-    return races;
+  getRaces(): Observable<IClasses> {
+    return this.http.get<IClasses>(this.baseUrl+"races");
+  }
+
+  getRace(i): Observable<DnDClass> {
+    return this.http.get<DnDClass>(this.baseUrl+"races/"+i);
   }
 }
