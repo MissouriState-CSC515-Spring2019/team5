@@ -21,7 +21,7 @@ interface DnDClass {
 export class CharacterComponent implements OnInit {
 
   public characterForm: FormGroup;
-  public characterModel = new Character("","");
+  public characterModel = new Character(null, null);
   public classes: IClasses;
   public races: IClasses;
   public classNames = [];
@@ -38,7 +38,6 @@ export class CharacterComponent implements OnInit {
           this.dndService.getClass(i).subscribe(classData => {
             this.oneClass = classData;
             this.classNames.push(this.oneClass);
-            console.log(this.oneClass);
           });
         }
       });
@@ -50,16 +49,15 @@ export class CharacterComponent implements OnInit {
           this.dndService.getRace(i).subscribe(raceData => {
             this.oneRace = raceData;
             this.raceNames.push(this.oneRace);
-            console.log(this.oneRace);
           });
         }
       });
   }
 
   onSubmit() {
-    //if (this.characterForm.valid) {
+    if (this.characterModel.class != null && this.characterModel.race != null) {
       console.log(this.characterModel);
-    //}
+    }
   }
 
 }

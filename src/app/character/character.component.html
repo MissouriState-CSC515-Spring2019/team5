@@ -1,6 +1,4 @@
 <form #characterForm="ngForm" novalidate (ngSubmit)="onSubmit()">
-  {{characterForm.value | json}}
-  {{characterModel | json}}
 <h1>Choose a character class:</h1>
   <div class="form-group" *ngFor="let aClass of classNames">
     <input required type="radio" #name="ngModel" name="class" class="form-control" 
@@ -8,7 +6,7 @@
   </div>
   <br>
 
-  <div *ngIf="!class">Please choose a class!</div>
+  <div *ngIf="!characterModel.class">Please choose a class!</div>
 
   <h1>Choose a race:</h1>
   <div *ngFor="let aRace of raceNames">
@@ -17,7 +15,7 @@
   </div>
   <br>
 
-  <div *ngIf="!race">Please choose a race!</div>
+  <div *ngIf="!characterModel.race">Please choose a race!</div>
   <br>
   <button type="submit" class="fightBtn">Fight!</button>
 </form>
