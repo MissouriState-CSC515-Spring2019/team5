@@ -1,15 +1,22 @@
 <form>
 <h1>Choose a character class:</h1>
   <div *ngFor="let aClass of classNames">
-    <input required type="radio" name="class" value="{{aClass.name}}">{{aClass.name}}<br>
+    <input required type="radio" name="class" value="{{aClass.name}}" 
+    [(ngModel)]="class">{{aClass.name}}<br>
   </div>
-  <div *ngIf="!class.valid">Please choose a class!</div>
+  <br>
+
+  <div *ngIf="!class">Please choose a class!</div>
 
   <h1>Choose a race:</h1>
   <div *ngFor="let aRace of raceNames">
-    <input required type="radio" name="race" value="{{aRace.name}}">{{aRace.name}}<br>
+    <input required type="radio" name="race" value="{{aRace.name}}" 
+    [(ngModel)]="race">{{aRace.name}}<br>
   </div>
   <br>
-  <button class="fightBtn">Fight!</button>
+
+  <div *ngIf="!race">Please choose a race!</div>
+  <br>
+  <button type="submit" class="fightBtn">Fight!</button>
 </form>
 
