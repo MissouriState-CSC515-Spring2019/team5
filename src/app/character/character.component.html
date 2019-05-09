@@ -1,6 +1,13 @@
-<h1>Choose a character class.</h1>
+<h1>Choose a character class:</h1>
+<form>
+  <input type="radio" name="class" value="Warlock" [(ngModel)]="classes.name">Warlock<br>
+  <option *ngFor="let aClass of classNames">{{ classNames }}</option>
+</form>
 
-<h1>Choose a race</h1>
-<p>
-  character works!
-</p>
+<h1>Choose a race:</h1>
+
+<form>
+  <input type="radio" name="class" value="Warlock">race1<br>
+  <input type="radio" name="class" value="Dwarf">Dwarf<br>
+</form>
+
