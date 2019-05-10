@@ -14,7 +14,6 @@ export class SpellsComponent implements OnInit {
   public spells: IResults;
   public oneSpell;
 
-
   constructor(private dndService: DndService) { }
 
   ngOnInit() {
@@ -23,7 +22,7 @@ export class SpellsComponent implements OnInit {
       console.log(this.spells);
       //put math.random function in here
       for(let i = 1; i <= 10; i++) {
-        this.dndService.getSpell(i).subscribe(spellData => {
+        this.dndService.getSpell(Math.random() * (313 - 1) + 1).subscribe(spellData => {
           this.oneSpell = spellData;
           console.log(this.oneSpell);
           this.spellNames.push(this.oneSpell);
