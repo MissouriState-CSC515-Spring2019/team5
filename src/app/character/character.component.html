@@ -1,22 +1,82 @@
-<form #characterForm="ngForm" novalidate (ngSubmit)="onSubmit()">
-<h1>Choose a character class:</h1>
-  <div class="form-group" *ngFor="let aClass of classNames">
-    <input required type="radio" #name="ngModel" name="class" class="form-control" 
-    value="{{aClass.name}}" [(ngModel)]="characterModel.class">{{aClass.name}}<br>
+<form class="container" #characterForm="ngForm" novalidate (ngSubmit)="onSubmit()">
+  <div class="characterClass">
+    <h1>Choose a character class:</h1>
+    <div *ngFor="let aClass of classes">
+      <input required type="radio" #name="ngModel" name="class"
+      value="{{aClass.name}}" [(ngModel)]="characterModel.class">{{aClass.name}}<br>
+    </div>
+
+    <div *ngIf="!characterModel.class">Please choose a class!</div>
   </div>
-  <br>
 
-  <div *ngIf="!characterModel.class">Please choose a class!</div>
-
+  <div class="characterRace">
   <h1>Choose a race:</h1>
-  <div *ngFor="let aRace of raceNames">
-    <input required type="radio" #name="ngModel" name="race" class="form-control" 
-    value="{{aRace.name}}" [(ngModel)]="characterModel.race">{{aRace.name}}<br>
+    <div *ngFor="let aRace of races">
+      <input required type="radio" #name="ngModel" name="race"
+      value="{{aRace.name}}" [(ngModel)]="characterModel.race">{{aRace.name}}<br>
+    </div>
+
+    <div *ngIf="!characterModel.race">Please choose a race!</div>
   </div>
   <br>
-
-  <div *ngIf="!characterModel.race">Please choose a race!</div>
-  <br>
-  <button type="submit" class="fightBtn">Fight!</button>
+  <button type="submit" class="infoBtn">Get Information</button>
 </form>
+<br>
+
+<div *ngIf="characterInfo.race.ability_bonuses" class="info">
+  <h2>Character's Information</h2>
+  <h3>{{ characterInfo.race.name }} {{ characterInfo.class.name }}</h3>
+  <p>Ability Scores:</p>
+    <ul>
+      <li>
+        STR: {{ characterInfo.race.ability_bonuses[0] }}
+      </li>
+      <li>
+        DEX: {{ characterInfo.race.ability_bonuses[1] }}
+      </li>
+      <li>
+        CON: {{ characterInfo.race.ability_bonuses[2] }}
+      </li>
+      <li>
+        INT: {{ characterInfo.race.ability_bonuses[3] }}
+      </li>
+      <li>
+        WIS: {{ characterInfo.race.ability_bonuses[4] }}
+      </li>
+      <li>
+        CHA: {{ characterInfo.race.ability_bonuses[5] }}
+      </li>
+    </ul>
+  <ul>
+    <li>
+      Hit die: {{ characterInfo.class.hit_die }}
+    </li>
+    <li>
+      Speed: {{ characterInfo.race.speed }}
+    </li>
+    <li>
+      Size: {{ characterInfo.race.size }}
+    </li>
+  </ul>
+  <p>
+    {{ characterInfo.race.size_description }}
+  </p>
+  <p>
+    {{ characterInfo.race.age }}
+  </p>
+  <p>{{ characterInfo.race.alignment }}</p>
+  <p>Languages:</p>
+    <ul>
+      <li *ngFor="let language of characterInfo.race.languages">
+        {{ language.name }}
+      </li>
+    </ul>
+  <p>{{ characterInfo.race.language_desc }}</p>
+  <p>Traits:</p>
+    <ul>
+      <li *ngFor="let trait of characterInfo.race.traits">
+        {{ trait.name }}
+      </li>
+    </ul>
+</div>
 
