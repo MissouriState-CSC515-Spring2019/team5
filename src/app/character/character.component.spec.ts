@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms';
 import { CharacterComponent } from './character.component';
+import { HttpClientModule } from '@angular/common/http'; 
 
 describe('CharacterComponent', () => {
   let component: CharacterComponent;
@@ -8,7 +9,11 @@ describe('CharacterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CharacterComponent ]
+      declarations: [ CharacterComponent ],
+      imports: [
+        HttpClientModule,
+        FormsModule
+      ],
     })
     .compileComponents();
   }));
