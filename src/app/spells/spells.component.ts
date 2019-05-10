@@ -1,17 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
-// import { Spells } from './spells';
 import { DndService } from '../dnd.service';
-
-interface SpellsA {
-  count: number, 
-  results: Array<SpellS>
-}
-
-interface SpellS {
-  name: string,
-  url: string
-}
+import { IResults } from '../IResults';
 
 @Component({
   selector: 'app-spells',
@@ -22,7 +11,7 @@ export class SpellsComponent implements OnInit {
 
   //public spellList = new Spells(null, null);
   public spellNames = [];
-  public spells: SpellsA;
+  public spells: IResults;
   public oneSpell;
 
 
@@ -30,11 +19,13 @@ export class SpellsComponent implements OnInit {
 
   ngOnInit() {
     this.dndService.getSpells().subscribe(data => {
-      //this.spells = data;
+      this.spells = data;
+      console.log(this.spells);
       //put math.random function in here
       for(let i = 1; i <= 10; i++) {
         this.dndService.getSpell(i).subscribe(spellData => {
           this.oneSpell = spellData;
+          console.log(this.oneSpell);
           this.spellNames.push(this.oneSpell);
         });
       }
