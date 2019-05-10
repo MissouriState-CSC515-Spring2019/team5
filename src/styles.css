@@ -6,3 +6,10 @@ background-color: rgb(231,231,219) !important;
 body {
     background-color: rgb(231,231,219) !important;
     }
+.landing{
+    padding-left: 10px;
+}
+
+ul{
+    max-width: 20%;
+}
