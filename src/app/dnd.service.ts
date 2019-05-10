@@ -21,6 +21,15 @@ interface DnDClass {
   url: string
 }
 
+interface SpellsA {
+  count: number, 
+  results: Array<SpellS>
+}
+
+interface SpellS {
+  name: string
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -46,5 +55,13 @@ export class DndService {
 
   getRace(i): Observable<DnDClass> {
     return this.http.get<DnDClass>(this.baseUrl+"races/"+i);
+  }
+
+  getSpells() :Observable<SpellsA> {
+    return this.http.get<SpellsA>(this.baseUrl+"spells");
+  }
+
+  getSpell(i): Observable<SpellS> {
+    return this.http.get<SpellS>(this.baseUrl+"spells/"+i);
   }
 }

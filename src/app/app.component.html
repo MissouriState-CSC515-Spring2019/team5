@@ -1,6 +1,15 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <h1>Welcome to our D&D App!</h1>
-<nav>
-  <a routerLink="/character">Character</a><br>
-  <a routerLink="/spells">Spells</a>
-</nav>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">{{title}}</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a routerLink="/character">Character</a></li>
+        <li><a routerLink="/spells">Spells</a></li>
+      </ul>
+    </div>
+  </nav>
 <router-outlet></router-outlet>
